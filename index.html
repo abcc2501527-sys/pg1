@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ライフハックメモ</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/script.js"></script>
+</head>
+
+<body>
+  <header class="app-header">
+    <h1>ライフハックメモ</h1>
+    <div id="count" class="count">記録件数: 0</div>
+  </header>
+
+  <div class="container">
+    <div class="form-section" role="region" aria-labelledby="formHeading">
+      <h2 id="formHeading" class="visually-hidden">入力フォーム</h2>
+
+      <form id="entryForm" class="entry-form" autocomplete="off" onsubmit="return false;">
+        <input id="content" class="input-text" type="text" placeholder="ライフハックの内容" />
+        <input id="link" class="input-text" type="text" placeholder="リンク (URL)" />
+        <select id="category" class="select">
+          <option value="学習">学習</option>
+          <option value="便利">便利</option>
+          <option value="生活">生活</option>
+          <option value="仕事">仕事</option>
+        </select>
+        <button id="addBtn" class="btn primary" type="button" onclick="onAdd()">追加</button>
+      </form>
+
+      <div class="controls">
+        <select id="filterCategory" class="select small" onchange="renderList()">
+          <option value="all">すべてのカテゴリ</option>
+          <option value="学習">学習</option>
+          <option value="便利">便利</option>
+          <option value="生活">生活</option>
+          <option value="仕事">仕事</option>
+        </select>
+        <button id="clearAll" class="btn danger small" type="button" onclick="onClearAll()">全削除</button>
+      </div>
+    </div>
+    <div id="list" class="list-section" role="region" aria-labelledby="listHeading">
+      <h2 id="listHeading" class="visually-hidden">メモ一覧</h2>
+    </div>
+  </div>
+
+  <template id="cardTemplate">
+    <article class="card" data-id="">
+      <header class="card-head">
+        <div class="meta"><span class="date"></span> <span class="category"></span></div>
+        <div class="actions">
+          <button class="btn edit small" data-action="edit" onclick="onEdit(this)">編集</button>
+          <button class="btn del small" data-action="delete" onclick="onDelete(this)">削除</button>
+        </div>
+      </header>
+      <p class="content"></p>
+      <a class="link" href="" target="_blank" rel="noopener noreferrer">参考リンク</a>
+    </article>
+  </template>
+</body>
+<small>2501527 道瀬稟太郎</small>
+
+</html>
